@@ -1,7 +1,7 @@
 require 'net/https'
 require 'uri'
 require 'json'
-Dir[File.join(__dir__, 'vod', '*.rb')].each { |file| require_relative file }
+Dir[File.join(__dir__, 'vod', '**/*.rb')].each { |file| require_relative file }
 
 # https://help.aliyun.com/document_detail/44432.html
 module Aliyun
