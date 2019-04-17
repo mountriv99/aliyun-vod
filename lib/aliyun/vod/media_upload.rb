@@ -35,6 +35,45 @@ module Aliyun
 					Util.get_response(params)
 				end
 
+				# https://help.aliyun.com/document_detail/106830.html
+				# params: {
+				#   :JobIds => "12345" # separate by commas, max 10
+				# }
+				# returns: {
+				#   "RequestId": "25818875-5F78-4A13-BEF6-D7393642CA58",
+				#     "URLUploadInfoList" :[{
+				#       "JobId":"xxxxxxx",
+				#       "UploadURL" : "http://xxx",
+				#       "MediaId" : "xxxxx",
+				#       "Status": "SUCCESS",
+				#       "CreationTime" : "2019-01-01T01:01:01Z",
+				#       "CompleteTime": "2019-01-01T01:05:01Z",
+				#       "UserData": "xxxx"
+				#     }, {
+				#       "JobId":"xxxxxxx",
+				#       "UploadURL" : "http://xxxx",
+				#       "Status": "PENDING",
+				#       "CreationTime" : "2019-01-01T01:01:01Z",
+				#       "CompleteTime": "2019-01-01T01:05:01Z",
+				#       "UserData": "xxxx"
+				#     }, {
+				#       "JobId":"xxxxxxx",
+				#       "UploadURL" : "http://xxxx",
+				#       "Status": "UPLOAD_FAIL",
+				#       "CreationTime" : "2019-01-01T01:01:01Z",
+				#       "CompleteTime": "2019-01-01T01:05:01Z",
+				#       "UserData": "xxxx",
+				#       "ErrorCode":"",
+				#       "ErrorMessage":""
+				#       }, ...],
+				#   "NonExists": ["XXXX1", "XXX2"]
+				# }
+				def get_url_upload_infos(params)
+					params = params.merge({:Action => "GetURLUploadInfos"})
+
+					Util.get_response(params)
+				end
+
 			end
 
 		end
