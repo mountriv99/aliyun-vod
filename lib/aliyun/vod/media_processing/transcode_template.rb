@@ -6,7 +6,7 @@ module Aliyun
 				class << self
 
 					# https://help.aliyun.com/document_detail/102669.html
-					# returns:  {
+					# returns: {
 					#   "RequestId": "25818875-5F78-4A13-BEF6-D7393642CA58",
 					#   "TranscodeTemplateGroupList": [
 					#     {
@@ -27,6 +27,19 @@ module Aliyun
 					# }
 					def list_transcode_template_group
 						params = params.merge({:Action => "ListTranscodeTemplateGroup"})
+
+						Util.get_response(params)
+					end
+
+					# https://help.aliyun.com/document_detail/102670.html
+					# params: {
+					#   :TranscodeTemplateGroupId => "12345"
+					# }
+					# returns: {
+					#   ...
+					# }
+					def get_transcode_template_group(params)
+						params = params.merge({:Action => "GetTranscodeTemplateGroup"})
 
 						Util.get_response(params)
 					end
